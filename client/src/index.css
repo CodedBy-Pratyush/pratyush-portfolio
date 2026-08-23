@@ -33,9 +33,11 @@ body {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0b0b14;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #2a2a3d;
   border-radius: 999px;
@@ -46,7 +48,6 @@ button {
   font-family: inherit;
 }
 
-/* Visible keyboard focus everywhere */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
@@ -79,6 +80,7 @@ input:focus-visible {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   background: rgba(11, 11, 20, 0.75);
   border-bottom: 1px solid #1e1e2e;
 }
@@ -199,7 +201,7 @@ input:focus-visible {
 }
 
 /* ---------------------------------------------------
-   AI CORE VISUAL (signature element)
+   AI CORE VISUAL
 --------------------------------------------------- */
 
 .ai-core-stage {
@@ -216,8 +218,15 @@ input:focus-visible {
   width: 128px;
   height: 128px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #a78bfa, #5b3fd6 55%, #241a52 100%);
-  box-shadow: 0 0 70px rgba(124, 92, 255, 0.55), inset 0 0 30px rgba(255, 255, 255, 0.15);
+  background: radial-gradient(
+    circle at 35% 30%,
+    #a78bfa,
+    #5b3fd6 55%,
+    #241a52 100%
+  );
+  box-shadow:
+    0 0 70px rgba(124, 92, 255, 0.55),
+    inset 0 0 30px rgba(255, 255, 255, 0.15);
   animation: pulse-core 3.2s ease-in-out infinite;
 }
 
@@ -250,22 +259,40 @@ input:focus-visible {
 }
 
 @keyframes pulse-core {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 @keyframes spin-ring {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin-ring-rev {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ai-core, .ai-ring, .ai-ring-outer {
+  .ai-core,
+  .ai-ring,
+  .ai-ring-outer {
     animation: none;
   }
 }
@@ -361,6 +388,7 @@ input:focus-visible {
 
 .chat-input {
   flex: 1;
+  min-width: 0;
   background: #13131f;
   border: 1px solid #2a2a3d;
   color: #f1f0f6;
@@ -413,7 +441,10 @@ input:focus-visible {
   padding: 11px 14px;
   font-size: 13.5px;
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
 .suggested-card:hover {
@@ -453,7 +484,9 @@ input:focus-visible {
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .explore-card:hover {
@@ -605,7 +638,7 @@ input:focus-visible {
 }
 
 /* ---------------------------------------------------
-   EDUCATION / CURRENT WORK / ACHIEVEMENTS / CONTACT
+   EDUCATION / WORK / ACHIEVEMENTS / CONTACT
 --------------------------------------------------- */
 
 .info-card {
@@ -662,4 +695,269 @@ input:focus-visible {
   text-align: center;
   color: #6f6c85;
   font-size: 13px;
+}
+
+/* ===================================================
+   MOBILE PERFORMANCE
+   =================================================== */
+
+@media (max-width: 767px) {
+
+  /* Lighter background */
+  body {
+    background-image:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(124, 92, 255, 0.08),
+        transparent 38%
+      );
+  }
+
+  /* Remove expensive blur */
+  .navbar {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(11, 11, 20, 0.96);
+  }
+
+  .navbar-inner {
+    padding: 13px 16px;
+  }
+
+  /* Smaller spacing */
+  .section-wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section-pad {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .hero-grid {
+    gap: 32px;
+    padding-top: 36px;
+    padding-bottom: 28px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.35rem, 12vw, 3.2rem);
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    min-height: 44px;
+  }
+
+  /* -----------------------------------------------
+     AI CORE
+     ----------------------------------------------- */
+
+  .ai-core-stage {
+    padding: 12px 0 8px;
+  }
+
+  .ai-core {
+    width: 100px;
+    height: 100px;
+
+    /* Much lighter glow */
+    box-shadow:
+      0 0 35px rgba(124, 92, 255, 0.30),
+      inset 0 0 18px rgba(255, 255, 255, 0.08);
+
+    /* Stop constant animation */
+    animation: none;
+  }
+
+  .ai-ring {
+    inset: -18px;
+
+    /* Stop rotation */
+    animation: none;
+  }
+
+  .ai-ring-outer {
+    inset: -38px;
+
+    /* Stop rotation */
+    animation: none;
+  }
+
+  .ai-ring::before {
+    box-shadow: none;
+  }
+
+  /* -----------------------------------------------
+     AI PANEL
+     ----------------------------------------------- */
+
+  .ai-panel {
+    padding: 20px 14px;
+    border-radius: 16px;
+
+    /* Remove large glow */
+    box-shadow: none;
+  }
+
+  .chat-window {
+    max-height: 300px;
+    padding: 12px;
+    gap: 9px;
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .bubble {
+    max-width: 94%;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .chat-form {
+    gap: 7px;
+  }
+
+  .chat-input {
+    min-width: 0;
+
+    /* Prevent mobile browser zoom */
+    font-size: 16px;
+
+    padding: 11px 12px;
+  }
+
+  .provider-row {
+    align-items: stretch;
+  }
+
+  .provider-select {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  /* -----------------------------------------------
+     CARDS
+     ----------------------------------------------- */
+
+  .explore-card,
+  .project-card,
+  .skill-card,
+  .info-card {
+    padding: 18px;
+  }
+
+  .explore-grid,
+  .project-grid,
+  .skills-grid {
+    gap: 12px;
+  }
+
+  /* -----------------------------------------------
+     MOBILE TYPOGRAPHY
+     ----------------------------------------------- */
+
+  .section-title {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+    margin-bottom: 24px;
+  }
+
+  /* -----------------------------------------------
+     REMOVE TOUCH DEVICE HOVER EFFECTS
+     ----------------------------------------------- */
+
+  .explore-card:hover,
+  .suggested-card:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+}
+
+/* ===================================================
+   SMALL PHONES
+   =================================================== */
+
+@media (max-width: 380px) {
+
+  .section-wrap {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ai-panel {
+    padding: 16px 10px;
+  }
+
+  .chat-window {
+    max-height: 260px;
+  }
+
+  .bubble {
+    max-width: 96%;
+    font-size: 13.5px;
+  }
+
+  .project-card,
+  .skill-card,
+  .explore-card,
+  .info-card {
+    padding: 15px;
+  }
+}
+
+/* ===================================================
+   TOUCH DEVICES
+   =================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .explore-card,
+  .suggested-card,
+  .btn-primary,
+  .btn-secondary {
+    transition: none;
+  }
+
+  .explore-card:hover,
+  .suggested-card:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+}
+
+
+/* new add for mobile view grid */
+
+@media (max-width: 767px) {
+  .contact-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .contact-item {
+    padding: 10px 6px;
+    text-align: center;
+  }
+
+  .contact-item span:last-child {
+    font-size: 11px;
+  }
 }

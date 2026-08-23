@@ -121,13 +121,13 @@ const providers = {
   groq: {
     url: "https://api.groq.com/openai/v1/chat/completions",
     apiKey: process.env.GROQ_API_KEY,
-    model: "llama-3.3-70b-versatile",
+    model: "GPT-OSS 120B",
   },
 
   mistral: {
     url: "https://api.mistral.ai/v1/chat/completions",
     apiKey: process.env.MISTRAL_API_KEY,
-    model: "mistral-small-latest",
+    model: "mistral-medium-latest",
   },
 };
 
@@ -179,7 +179,7 @@ async function callOpenAICompatible(message, systemPrompt, provider) {
 // --------------------------------------------------
 
 async function callGemini(message, systemPrompt) {
-  const model = "gemini-2.5-flash";
+  const model = "gemini-3.6-flash";
 
   const url =
     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent` +

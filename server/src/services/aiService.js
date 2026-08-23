@@ -121,7 +121,7 @@ const providers = {
   groq: {
     url: "https://api.groq.com/openai/v1/chat/completions",
     apiKey: process.env.GROQ_API_KEY,
-    model: "GPT-OSS 120B",
+    model: "openai/gpt-oss-120b",
   },
 
   mistral: {

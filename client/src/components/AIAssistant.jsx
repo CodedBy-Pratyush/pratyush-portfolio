@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 
-
 const API_URL =
   import.meta.env.VITE_API_URL ||
   "https://pratyush-portfolio-rsgl.onrender.com/api/ai/chat";
+
 const SUGGESTED_QUESTIONS = [
   "What projects has Pratyush built?",
   "Tell me about CompilerX.",

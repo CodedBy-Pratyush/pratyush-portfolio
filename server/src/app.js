@@ -1,32 +1,31 @@
-// app.js
-// Sets up the Express app: middleware + routes.
-
 const express = require("express");
 const cors = require("cors");
+
 const aiRoutes = require("./routes/aiRoutes");
 
 const app = express();
 
-// CORS configuration - allow multiple frontend URLs
 const allowedOrigins = [
- "https://pratyush-portfolio-khaki.vercel.app",
+  "https://pratyush-portfolio-khaki.vercel.app",
   "http://localhost:5173",
   "http://localhost:3000",
-  process.env.FRONTEND_URL || "https://pratyush-portfolio-khaki.vercel.app",
+  process.env.FRONTEND_URL,
 ].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes("*")) {
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   }),
 );
+
 app.use(express.json());
 
 app.get("/", (req, res) => {

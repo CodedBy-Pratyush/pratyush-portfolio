@@ -1,3 +1,5 @@
+// app.js
+
 const express = require("express");
 const cors = require("cors");
 
@@ -5,22 +7,9 @@ const aiRoutes = require("./routes/aiRoutes");
 
 const app = express();
 
-const allowedOrigins = [
-  "https://pratyush-portfolio-khaki.vercel.app",
-  "http://localhost:5173",
-  "http://localhost:3000",
-  process.env.FRONTEND_URL,
-].filter(Boolean);
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: "https://pratyush-portfolio-khaki.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   }),

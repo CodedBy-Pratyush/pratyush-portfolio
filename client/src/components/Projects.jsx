@@ -4,16 +4,16 @@ const PROJECTS = [
     description: "AI-powered multi-language online compiler using Groq + Gemini.",
     tech: ["React", "Node.js", "Groq API", "Gemini API"],
     status: "done",
-    github: "https://github.com/CodedBy-Pratyush/CompilerX"
-    liveDemo: "compiler-x-ten.vercel.app",
+    github: "https://github.com/CodedBy-Pratyush/CompilerX",
+    liveDemo: "https://compiler-x-ten.vercel.app",
   },
 
-    {
+  {
     name: "RepoTalkAi",
     description: "AI-powered analyze Git repo and Chat with repo.",
-    tech: ["React", "Node.js","RAG", "vector search" "Groq API", "Gemini API"],
+    tech: ["React", "Node.js", "RAG", "vector search", "Groq API", "Gemini API"],
     status: "Almost done",
-    github: ""
+    github: "",
     liveDemo: "",
   },
 
@@ -25,6 +25,7 @@ const PROJECTS = [
     github: "",
     liveDemo: "",
   },
+
   {
     name: "UPI Without Internet",
     description: "Offline P2P transaction processor — architecture & research stage.",
@@ -44,12 +45,27 @@ function Projects() {
       <div className="project-grid">
         {PROJECTS.map((project) => (
           <div key={project.name} className="project-card">
-            <span className={project.status === "progress" ? "status-tag status-progress" : "status-tag status-done"}>
+            <span
+              className={
+                project.status === "progress"
+                  ? "status-tag status-progress"
+                  : "status-tag status-done"
+              }
+            >
               {project.status === "progress" ? "IN PROGRESS" : "COMPLETED"}
             </span>
 
             <h3>{project.name}</h3>
-            <p style={{ color: "#9b98b0", fontSize: 14, margin: 0 }}>{project.description}</p>
+
+            <p
+              style={{
+                color: "#9b98b0",
+                fontSize: 14,
+                margin: 0,
+              }}
+            >
+              {project.description}
+            </p>
 
             <div className="badge-row">
               {project.tech.map((t) => (
@@ -61,16 +77,30 @@ function Projects() {
 
             <div className="project-links">
               {project.github ? (
-                <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-secondary"
+                >
                   GitHub
                 </a>
               ) : (
-                <span className="btn-secondary" style={{ opacity: 0.5, cursor: "default" }}>
+                <span
+                  className="btn-secondary"
+                  style={{ opacity: 0.5, cursor: "default" }}
+                >
                   GitHub
                 </span>
               )}
+
               {project.liveDemo && (
-                <a href={project.liveDemo} target="_blank" rel="noreferrer" className="btn-secondary">
+                <a
+                  href={project.liveDemo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-secondary"
+                >
                   Live Demo
                 </a>
               )}

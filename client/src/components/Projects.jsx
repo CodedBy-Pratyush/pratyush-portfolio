@@ -1,20 +1,22 @@
 const PROJECTS = [
   {
-    name: "DeepSeek Clone",
-    description: "Real-time conversational AI platform with streaming LLM responses.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
-    status: "done",
-    github: "",
-    liveDemo: "",
-  },
-  {
     name: "CompilerX",
     description: "AI-powered multi-language online compiler using Groq + Gemini.",
     tech: ["React", "Node.js", "Groq API", "Gemini API"],
     status: "done",
-    github: "",
+    github: "https://github.com/CodedBy-Pratyush/CompilerX"
+    liveDemo: "compiler-x-ten.vercel.app",
+  },
+
+    {
+    name: "RepoTalkAi",
+    description: "AI-powered analyze Git repo and Chat with repo.",
+    tech: ["React", "Node.js","RAG", "vector search" "Groq API", "Gemini API"],
+    status: "Almost done",
+    github: ""
     liveDemo: "",
   },
+
   {
     name: "ResumeForge AI",
     description: "ATS resume analyzer and builder with AI bullet rewriting.",
